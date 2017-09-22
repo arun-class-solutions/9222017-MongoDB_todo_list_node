@@ -1,4 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
+const ObjectId = require("mongodb").ObjectID;
 
 // 1. Connect to MongoDB on port 27017
 // 2. Take db instance and use it to run a query against the database
@@ -12,7 +13,8 @@ MongoClient.connect(mongoUrl, (err, db) => {
 
   db.collection("todos").insert({
     todoText: "Clean the house",
-    todoFinished: false
+    todoFinished: false,
+    userId: new ObjectId("59c58c96f1a9922cea84fdbf")
   }, (err, newTodo) => {
     console.log(newTodo);
     // "newTodo" from above is the new database record that was created
